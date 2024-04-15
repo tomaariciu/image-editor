@@ -1,0 +1,75 @@
+// Copyright Toma Ariciu 312CAb 2023-2024
+
+Imaginea este stocata intr-o structura care contine tipul acesteia, precum si
+matricea de pixeli, dimensiunile si valoarea maxima a intensitatii culorilor.
+Pixelii sunt tinuti ca arrayuri de 3 inturi, fiind folosit doar v[0] in cazul
+in care imaginea este in tonuri de gri.
+Pentru selectie, am facut o structura care stocheaza coordonatele colturilor
+stanga-sus si dreapta-jos.
+
+In main am facut parsarea comenzii si apelarea functiei corespunzatoare, in
+cazul in care comanda este valida, iar de parsarea parametrilor se ocupa
+functia apelata.
+
+
+1. LOAD
+
+Este dealocata matricea anterioara, daca aceasta exista. Apoi, se citeste o
+cale relativa a unei imagini. Daca aceasta este valida, atunci imaginea este
+incarcata in memorie si este selectata in intregime. In caz contrar, se
+afiseaza mesajul de eroare.
+Pentru toate celelalte comenzi, se testeaza mai intai daca exista o imagine
+incarcata.
+
+2. SELECT
+
+In cazul unor parametrii valizi, selectia este schimbata in intreaga imagine
+sau intr-un dreptunghi cu coordonatele date. In caz contrar, se afiseaza
+mesajul de eroare corespunzator si selectia ramane aceeasi.
+
+3. ROTATE
+
+Programul suporta doar rotatii la unghiuri care sunt multiplii de 90 sau la
+imagini intregi. De aceea, mai intai se verifica validitatea parametrilor si a
+selectiei si se afiseaza mesajul de eroare, daca este cazul. Pe urma, se
+calculeaza numarul minim de rotatii la dreapta pentru a obtine unghiul dat si
+se efectueaza rotirea matricii doar prin rotiri succesive la dreapta.
+
+4. EQUALIZE
+
+Programul suporta doar egalizarea imaginilor grayscale, asa ca mai intai
+verificam tipul de imagine pe care-l avem incarcat in memorie si afisam
+mesajul de eroare, daca este cazul. Apoi, se calculeaza vectorul de frecventa
+si sumele partiale ale acestuia, deoarece avem nevoie intotdeauna de sume pe
+prefix. Apoi, se modifica fiecare pixel conform functiei de transformare.
+
+5. CROP
+
+Este modificata matricea din memorie astfel incat sa ramana stocata doar zona
+selectata din imaginea initiala. De asemenea, noua selectie o sa reprezinte
+intreaga imagine dupa aplicarea comenzii.
+
+6. APPLY
+
+Programul suporta doar patru transformari, iar imaginea trebuie sa fie color.
+De aceea, mai intai se verifica tipul de imagine si validitatea parametrilor,
+fiind afisat mesajul de eroare, daca este cazul. Apoi se modifica selectia
+efectiva pentru a elimina pixelii de pe margine, care raman neschimbati, si se
+aplica nucleul de imagine corespunzator peste noua selectie.  
+
+7. HISTOGRAM
+
+Programul suporta doar histograme pt imagini grayscale si doar intervale de
+lungimi egale cu puteri de 2. De aceea, mai intai se verifica validitatea
+imaginii si a parametrilor si se afiseaza mesajul de eroare, daca este cazul.
+Apoi, se calculeaza vectorul de frecventa si valoarea maxima din acesta. In
+final, se afiseaza histograma.
+
+8. SAVE
+
+Se citeste o cale relativa a unui fisier si formatul in care se doreste sa
+fie salvata imaginea. Apoi, imaginea din memorie este salvata in fisierul dat.
+
+9. EXIT
+
+Sunt dealocate toate resursele folosite si se opreste programul.
